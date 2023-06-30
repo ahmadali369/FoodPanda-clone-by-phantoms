@@ -504,57 +504,70 @@ class _MyHomePageState extends State<MyHomePage> {
                       SizedBox(
                         height: Height * .01,
                       ),
-                      const SingleChildScrollView(
+                      SingleChildScrollView(
                         scrollDirection: Axis.horizontal,
                         child: Row(
                           children: [
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+                                FoodChips(img: 'assets/food_imgs/img (1).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (1).jpg'),
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+                                FoodChips(img: 'assets/food_imgs/img (2).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (2).jpg'),
+
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+
+                                FoodChips(img: 'assets/food_imgs/img (3).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (3).jpg'),
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+                                FoodChips(img: 'assets/food_imgs/img (4).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (4).jpg'),
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+
+                                FoodChips(img: 'assets/food_imgs/img (5).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (6).jpeg'),
+
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+
+                                FoodChips(img: 'assets/food_imgs/img (7).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (8).jpeg'),
+
+
                               ],
                             ),
                             Column(
                               mainAxisAlignment: MainAxisAlignment.start,
                               children: [
-                                FoodChips(),
-                                FoodChips(),
+                                FoodChips(img: 'assets/food_imgs/img (9).jpeg'),
+                                FoodChips(img: 'assets/food_imgs/img (10).jpeg'),
+
                               ],
                             ),
                           ],
@@ -721,7 +734,9 @@ class _RestChipState extends State<RestChip> {
 }
 
 class FoodChips extends StatefulWidget {
-  const FoodChips({Key? key}) : super(key: key);
+  String img;
+
+  FoodChips({Key? key,required this.img}) : super(key: key);
 
   @override
   State<FoodChips> createState() => _FoodChipsState();
@@ -730,17 +745,31 @@ class FoodChips extends StatefulWidget {
 class _FoodChipsState extends State<FoodChips> {
   @override
   Widget build(BuildContext context) {
+    final Width = MediaQuery.of(context).size.width;
+    final Height = MediaQuery.of(context).size.height;
+
     return Container(
       width: 100,
       height: 100,
       color: Colors.white,
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           SizedBox(
             width: 60,
             height: 60,
-            child: FlutterLogo(),
+            child:                 Container(
+              height: Height * .18,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(15.0),
+                child: Image.asset(
+                  "${widget.img}",
+                  // , // Replace with your asset image path
+                  width: double.infinity,
+                  fit: BoxFit.cover,
+                ),
+              ),
+            ),
             // child: Image.asset(
             //   'assets/square_image.png', // Replace with your asset image path
             // ),
